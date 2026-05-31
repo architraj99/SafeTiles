@@ -26,8 +26,8 @@ body{
   display:inline-block;
   padding:6px 14px;
   border-radius:999px;
-  background:#e2d5c5;
-  color:#000000;
+  background:#f3e7d8;
+  color:#0e0b0a;
   margin-bottom:18px;
 }
 
@@ -55,6 +55,7 @@ h1{
   background:#efe6dc;
   cursor:pointer;
   transition:.15s;
+  font-size:18px;
 }
 
 .tile:hover{
@@ -65,6 +66,11 @@ h1{
   background:#d8efe0;
 }
 
+.bomb{
+  background:#dc2626;
+  color:white;
+}
+
 #restartBtn{
   width:100%;
   border:none;
@@ -73,4 +79,9 @@ h1{
   background:#b26a3c;
   color:white;
   cursor:pointer;
+  transition:.15s;
+}
+
+#restartBtn:hover{
+  background:#9f5d33;
 }
