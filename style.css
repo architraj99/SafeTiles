@@ -73,6 +73,20 @@ h1{
   color:white;
 }
 
+#status{
+    margin-bottom: 20px;
+    color:#8a7663;
+    font-weight:bold;
+}
+
+.win{
+    color: #15803d;
+}
+
+.lose{
+    color: #dc2626;
+}
+
 #restartBtn{
   width:100%;
   border:none;
