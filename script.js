@@ -22,6 +22,34 @@ function placeBombs() {
   }
 }
 
+function countNearbyBombs(index) {
+
+    const row = Math.floor(index / SIZE);
+    const col = index % SIZE;
+
+    let count = 0;
+
+    for(let r= row - 1; r <= row + 1; r++) {
+
+        for(let c = col - 1; c <= col + 1; c++) {
+
+            if(r < 0 || c < 0 || r >= SIZE || c >= SIZE) {
+                continue;
+            }
+
+            const neighbor = r * SIZE + c;
+
+            if(bombs.includes(neighbor) ) {
+                count++;
+            }
+
+        }
+
+    }
+    
+    return count;
+}
+
 function revealBombs() {
 
   const tiles = document.querySelectorAll(".tile");
@@ -63,7 +91,13 @@ function createBoard() {
           return;
         }
 
+        if(tile.classList.contains("revealed") ) {
+            return;
+        }
+
         tile.classList.add("revealed");
+        const count = countNearbyBombs(index);
+        tile.textContent = count;
     });
 
     board.appendChild(tile);
