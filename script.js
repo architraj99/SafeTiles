@@ -4,11 +4,35 @@ const restartBtn = document.getElementById("restartBtn");
 
 const statusEl = document.getElementById("status");
 
+const timerEl = document.getElementById("timer");
+
+const card = document.querySelector(".card");
+
 const SIZE = 6;
 const BOMB_COUNT = 6;
 let bombs = [];
 let gameOver = false;
 let revealedTiles = 0;
+let seconds = 0;
+let timer;
+
+function startTimer() {
+
+    clearInterval(timer);
+    seconds = 0;
+    timerEl.textContent = "Time: 0s";
+
+    timer = setInterval(function() {
+
+        seconds++;
+        timerEl.textContent = "Time: " + seconds + "s";
+
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timer);
+}
 
 function placeBombs() {
 
@@ -65,14 +89,27 @@ function revealBombs() {
 
 }
 
+function disableBoard() {
+
+    document.querySelectorAll(".tile").forEach(tile => {
+
+        tile.disabled = true;
+    });
+}
+
 function createBoard() {
 
   board.innerHTML = "";
   gameOver = false;
   revealedTiles = 0;
+
+  card.classList.remove("win-card", "lose-card");
+
   statusEl.className = "";
   statusEl.textContent = "Safe Tiles Left: " + (SIZE * SIZE - BOMB_COUNT);
   placeBombs();
+
+  startTimer();
 
   for (let i = 0; i < SIZE * SIZE; i++) {
 
@@ -93,7 +130,12 @@ function createBoard() {
           tile.classList.add("bomb");
 
           revealBombs();
+          stopTimer();
           gameOver = true;
+
+          disableBoard();
+          card.classList.add("lose-card");
+    
           statusEl.textContent = "Game Over";
           statusEl.className = "lose";
           return;
@@ -112,8 +154,13 @@ function createBoard() {
 
         if(revealedTiles === SIZE * SIZE - BOMB_COUNT) {
 
+            stopTimer();
+
             gameOver = true;
-            statusEl.textContent = "You Won!!!";
+            disableBoard();
+            card.classList.add("win-card");
+
+            statusEl.textContent = "You Won In " + seconds + "s";
             statusEl.className = "win";
         }
     });

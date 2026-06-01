@@ -10,7 +10,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#f4efe8;
+  background: linear-gradient(#11bad8, #191df3, #1b0416);
 }
 
 .card{
@@ -18,16 +18,22 @@ body{
   padding:30px;
   border-radius:24px;
   width:460px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  text-align:center; 
+
+  box-shadow: 10px 10px 30px #9918aa
 }
 
 .badge{
   display:inline-block;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding:6px 14px;
+  font-size: 17px;
+  letter-spacing: 4px;
   border-radius:999px;
+
   background:#f3e7d8;
-  color:#181412;
+  color:#4b6fa7;
+
   margin-bottom:18px;
 }
 
@@ -52,9 +58,11 @@ h1{
   aspect-ratio:1;
   border:none;
   border-radius:12px;
+
   background:#efe6dc;
   cursor:pointer;
   transition:.15s;
+
   font-size:18px;
   font-weight:bold;
 }
@@ -68,23 +76,46 @@ h1{
   color:#2563eb;
 }
 
-.bomb {
+.bomb{
   background:#dc2626;
   color:white;
 }
 
+#infoBar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
 #status{
-    margin-bottom: 20px;
-    color:#8a7663;
-    font-weight:bold;
+  color:#8a7663;
+  font-weight:bold;
+}
+
+#timer{
+  color:#8a7663;
+  font-weight:bold;
 }
 
 .win{
-    color: #15803d;
+  color:#15803d;
 }
 
 .lose{
-    color: #dc2626;
+  color:#dc2626;
+}
+
+.card.win-card{
+  box-shadow: 0 0 0 3px #22c55e22, 0 10px 30px rgba(0,0,0,.08);
+}
+
+.card.lose-card{
+  box-shadow: 0 0 0 3px #ef444422, 0 10px 30px rgba(0,0,0,.08);
+}
+
+.tile:disabled{
+  cursor:not-allowed;
 }
 
 #restartBtn{
@@ -95,7 +126,7 @@ h1{
   background:#b26a3c;
   color:white;
   cursor:pointer;
-  transition: .15s;
+  transition:.15s;
 }
 
 #restartBtn:hover{
